@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -11,6 +12,70 @@
         body {
             font-family: 'Roboto', sans-serif;
         }
+
+        /* Media Queries for mobile responsiveness */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: row; /* Keep items in a row */
+                justify-content: space-between;
+                align-items: center;
+                padding: 1rem; /* Reduce padding for mobile */
+            }
+
+            /* Hide the desktop nav items for mobile */
+            nav {
+                display: none; 
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2rem; /* Smaller font size for mobile */
+            }
+
+            p {
+                font-size: 1rem;
+                padding: 0 1rem; /* Add padding for mobile */
+            }
+
+            a {
+                padding: 0.75rem 1.5rem; /* Adjust button padding for mobile */
+            }
+        }
+
+        /* Hamburger Menu Styles */
+        .mobile-menu-toggle {
+            display: none; /* Hidden by default */
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        .mobile-menu.active {
+            display: block;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            color: black;
+            width: 100%;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f1f1f1;
+        }
     </style>
 </head>
 <body class="bg-blue-900 text-white">
@@ -19,37 +84,14 @@
             <i class="fab fa-facebook-f text-white text-2xl"></i>
             <span class="text-white text-xl font-bold">Gaming</span>
         </div>
-        <nav class="flex items-center space-x-4">
+
+        <!-- Mobile menu toggle button (hamburger) -->
+        <button class="mobile-menu-toggle text-white block lg:hidden">
+            <i class="fas fa-bars text-2xl"></i>
+        </button>
+
+        <nav class="hidden lg:flex items-center space-x-4">
             <div class="relative group">
-                
-                <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow-lg">
-                    <a class="block px-4 py-2" href="#">Option 1</a>
-                    <a class="block px-4 py-2" href="#">Option 2</a>
-                </div>
-            </div>
-            <div class="relative group">
-                
-                <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow-lg">
-                    <a class="block px-4 py-2" href="#">Option 1</a>
-                    <a class="block px-4 py-2" href="#">Option 2</a>
-                </div>
-            </div>
-            <div class="relative group">
-                
-                <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow-lg">
-                    <a class="block px-4 py-2" href="#">Option 1</a>
-                    <a class="block px-4 py-2" href="#">Option 2</a>
-                </div>
-            </div>
-            <div class="relative group">
-                
-                <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow-lg">
-                    <a class="block px-4 py-2" href="#">Option 1</a>
-                    <a class="block px-4 py-2" href="#">Option 2</a>
-                </div>
-            </div>
-            <div class="relative group">
-                
                 <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow-lg">
                     <a class="block px-4 py-2" href="#">Option 1</a>
                     <a class="block px-4 py-2" href="#">Option 2</a>
@@ -59,25 +101,34 @@
                 <input class="px-2 py-1 rounded" placeholder="Search" type="text"/>
                 <i class="fas fa-search text-white"></i>
             </div>
-            <div class="relative group">
-                
-                <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow-lg">
-                    <a class="block px-4 py-2" href="#">Option 1</a>
-                    <a class="block px-4 py-2" href="#">Option 2</a>
-                </div>
-            </div>
             <img alt="User profile picture" class="rounded-full" height="40" src="ptag.png" width="40"/>
         </nav>
+
+        <!-- Mobile Menu -->
+        <nav class="mobile-menu bg-blue-600 lg:hidden">
+            <a href="#">Option 1</a>
+            <a href="#">Option 2</a>
+            <a href="#">Option 3</a>
+            <a href="#">Option 4</a>
+        </nav>
     </header>
+
     <main class="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-blue-900 to-blue-700">
-        <h1 class="text-4xl font-bold mb-4">Join the Facebook Gaming Partner Program</h1>
-        <p class="text-center max-w-2xl text-lg mb-8">
-            The Partner Program brings Level Up streamers to the next step in their monetization path, offers additional support, provides early access invites and other exclusive benefits available for our Partners only. The program is designed to help streamers turn live streaming into a career and grow their communities at Facebook Gaming.
+        <h1 class="text-4xl font-bold mb-4 text-center">Join the Facebook Gaming Partner Program</h1>
+        <p class="text-center max-w-2xl text-lg mb-8 px-4">
+            The Partner Program brings Level Up streamers to the next step in their monetization path, offers additional support, provides early access invites and other exclusive benefits available for our Partners only.
         </p>
-        <!-- Change the href to the desired destination URL -->
         <a href="apply.html" class="bg-white text-blue-700 hover:bg-blue-500 hover:text-white font-bold py-2 px-6 rounded">
             Apply
         </a>
     </main>
+
+    <script>
+        // Toggle the mobile menu
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            mobileMenu.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
